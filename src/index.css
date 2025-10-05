@@ -1,0 +1,85 @@
+/* 🌐 Global modern look */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #060606;
+  color: var(--bs-body-color);
+  overflow-x: hidden;
+}
+
+/* 🌟 Modern section spacing */
+.section {
+  padding: 6rem 0;
+}
+
+/* 🌈 Hero section gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #6f42c1, #0d6efd);
+  color: white;
+  position: relative;
+}
+
+.bg-custom-dark {
+  background-color: #060606; /* midnight blue */
+  color: white; /* make text readable */
+}
+
+
+/* 💎 Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ✨ Buttons */
+.btn-modern {
+  border-radius: 30px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-modern:hover {
+  transform: translateY(-2px);
+}
+
+/* 🧭 Navbar transparency */
+.navbar.bg-white {
+  background: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* 💬 Testimonials */
+.testimonial-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+}
+
+/* 🔼 Scroll button */
+.btn-scroll {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 🎨 Dark mode tweak */
+[data-bs-theme="dark"] body {
+  background-color: #121212;
+  color: #ddd;
+}

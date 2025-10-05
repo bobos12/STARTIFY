@@ -1,0 +1,34 @@
+.hero-bg {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none; /* let clicks pass through to hero content */
+}
+
+.beams-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure the underlying canvas fills the parent container */
+.beams-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Keep hero content above the canvas */
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Respect users who prefer reduced motion: hide the animated canvas for them */
+@media (prefers-reduced-motion: reduce) {
+  .beams-container { display: none; }
+}

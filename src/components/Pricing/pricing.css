@@ -1,0 +1,21 @@
+.featured-plan .card {
+  border: 2px solid rgba(56,189,248,0.4) !important;
+  box-shadow: 0 0 20px rgba(56,189,248,0.15) !important;
+  box-shadow: 0 0 30px rgba(56,189,248,0.4) !important;
+  transform: scale(1.05);
+}
+
+.featured-plan .card:hover {
+  box-shadow: 0 0 30px rgba(56,189,248,0.4) !important;
+  transform: scale(1.08);
+}
+
+
+.featured-plan .card {
+  border: 2px solid rgba(56,189,248,0.4);
+  box-shadow: 0 0 20px rgba(56,189,248,0.15);
+}
+
+.featured-plan .card:hover {
+  box-shadow: 0 0 30px rgba(56,189,248,0.4);
+}

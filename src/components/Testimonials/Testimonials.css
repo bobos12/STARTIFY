@@ -1,0 +1,130 @@
+.testimonials-section {
+  padding: 6rem 1rem;
+}
+
+.testimonials-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.testimonials-header p {
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.testimonials-header h2 {
+  margin-top: 1rem;
+  font-size: 2.5rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.testimonials-link {
+  margin-top: 2rem;
+}
+
+.testimonials-link a {
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid #111827;
+  color: #a5a5a5;
+  padding-bottom: 0.25rem;
+  transition: 0.3s;
+}
+
+.testimonials-link a:hover {
+  color: #4b5563;
+  border-color: #4b5563;
+}
+
+/* Background Glow */
+.testimonials-wrapper {
+  position: relative;
+  margin-top: 3rem;
+}
+
+.testimonials-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 2rem;
+  background: linear-gradient(
+    90deg,
+    #44ff9a,
+    #44b0ff 22%,
+    #8b44ff 48%,
+    #ff6644 73%,
+    #ebff70
+  );
+  opacity: 0.3;
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.testimonials-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  z-index: 1;
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.testimonial-content {
+  padding: 2rem;
+}
+
+.stars {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+}
+
+.star {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #fbbf24;
+}
+
+blockquote {
+  margin-top: 1.5rem;
+}
+
+blockquote p {
+  color: #111827;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.testimonial-author img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-author h4 {
+  margin: 0;
+  font-weight: 600;
+  color: #111827;
+}
+
+.testimonial-author span {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
