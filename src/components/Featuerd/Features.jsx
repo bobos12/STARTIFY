@@ -6,7 +6,7 @@ import {
   FaCloud,
   FaMobileAlt,
 } from "react-icons/fa";
-import SpotlightCard from "./SpotlightCard";
+import SpotlightCard from "./SpotLightCard";
 import "./Features.css";
 
 const features = [
