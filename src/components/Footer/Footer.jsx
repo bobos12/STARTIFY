@@ -3,7 +3,7 @@ import "./footer.css";
 
 export default function Footer() {
   return (
-    <footer className="footer text-white pt-5 pb-4">
+    <footer className="footer text-white pt-5 pb-4 ">
       <div className="container">
         {/* Top CTA Section */}
         <div className="subscribe-section text-center mb-5">

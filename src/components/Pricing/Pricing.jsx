@@ -27,7 +27,7 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section className="py-5 text-white">
+    <section className="py-5 text-white" data-aos="fade-up" data-aos-duration="1000">
       <div className="container text-center">
         {/* Header */}
         <div className="mb-5">

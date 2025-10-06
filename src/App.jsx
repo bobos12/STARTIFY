@@ -17,8 +17,13 @@ function App() {
   const [modalInfo, setModalInfo] = useState({ show: false, plan: null });
 
   useEffect(() => {
-    AOS.init({ duration: 700 });
-  // no theme switching: site uses dark background with white text
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true,
+      offset: 100,
+      easing: 'ease-in-out'
+    });
   }, []);
 
   const openPlanModal = (plan) => setModalInfo({ show: true, plan });

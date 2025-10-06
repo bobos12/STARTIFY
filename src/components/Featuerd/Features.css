@@ -3,8 +3,13 @@
   border-radius: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background-color: #0a0a0a;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.05);
+  box-shadow: 0px 10px 20px rgba(56, 189, 248, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-spotlight:hover {
+  
+  box-shadow: 0 20px 40px rgba(56, 189, 248, 0.2), 0 0 60px rgba(56, 189, 248, 0.1); /* glow */
 }
 
 .feature-inner {
@@ -12,6 +17,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding: 2rem 1rem;
 }
 
 .feature-icon {
@@ -22,16 +28,19 @@
   width: 56px;
   height: 56px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(99,102,241,0.04));
-  box-shadow: 0 6px 20px rgba(56,189,248,0.06);
-  transition: transform 0.3s ease;
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.1),
+    rgba(99, 102, 241, 0.06)
+  );
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-spotlight:hover .feature-icon {
-  transform: scale(1.2);
-  transition: transform 0.3s ease;
+  box-shadow: 0 12px 30px rgba(56, 189, 248, 0.2),
+              0 0 20px rgba(99, 102, 241, 0.15); /* subtle glow matching icon colors */
 }
-
 
 .feature-title {
   font-size: 1.15rem;
@@ -39,20 +48,42 @@
 }
 
 .feature-desc {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   margin: 0;
   opacity: 0.9;
-}
-
-/* subtle hover lift and glow */
-.card-spotlight:hover {
-  box-shadow: 0 20px 40px rgba(56,189,248,0.08);
+  line-height: 1.5;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .card-spotlight,
-  .card-spotlight:hover {
+  .card-spotlight:hover,
+  .feature-icon,
+  .feature-icon:hover {
     transition: none;
     transform: none;
   }
 }
+
+/* Responsive adjustments */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row max */
+  gap: 3rem;
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* 2 per row on tablets */
+@media (max-width: 992px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 1 per row on mobile */
+@media (max-width: 600px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

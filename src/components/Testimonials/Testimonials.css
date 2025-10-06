@@ -38,10 +38,12 @@
   border-color: #4b5563;
 }
 
-/* Background Glow */
+/* Glow Background */
 .testimonials-wrapper {
   position: relative;
   margin-top: 3rem;
+  overflow: visible;
+  z-index: 1;
 }
 
 .testimonials-bg {
@@ -57,24 +59,51 @@
     #ebff70
   );
   opacity: 0.3;
-  filter: blur(60px);
-  z-index: 0;
+  filter: blur(80px);
+  z-index: -1;
 }
 
+/* Scrollable Grid */
 .testimonials-grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  z-index: 1;
+  display: flex;
+  gap: 3rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 2rem 2rem; /* increased side padding */
+  z-index: 2;
+  scrollbar-width: none;
 }
 
-/* Testimonial Cards */
+.testimonials-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card Styling */
 .testimonial-card {
-  background: #ffffff;
+  background: #fff;
   border-radius: 1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  scroll-snap-align: center; /* ✅ centered snap */
+  flex: 0 0 calc(33.333% - 1.5rem);
+}
+
+@media (max-width: 992px) {
+  .testimonial-card {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials-grid {
+    justify-content: center; /* ✅ center items horizontally */
+    padding-left: 10%; /* ✅ center first card on mobile */
+  }
+
+  .testimonial-card {
+    flex: 0 0 85%; /* ✅ slightly smaller so it looks centered */
+    scroll-snap-align: center;
+  }
 }
 
 .testimonial-content {
@@ -127,4 +156,43 @@ blockquote p {
 .testimonial-author span {
   font-size: 0.9rem;
   color: #6b7280;
+}
+
+/* Scroll Buttons */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(56, 189, 248, 0.8);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  margin: 0 -3rem;
+}
+
+.scroll-btn:hover {
+  background: rgba(56, 189, 248, 1);
+}
+
+.scroll-btn.left {
+  left: -1.5rem;
+}
+
+.scroll-btn.right {
+  right: -1.5rem;
+}
+
+@media (max-width: 768px) {
+  .scroll-btn {
+    display: none;
+  }
 }

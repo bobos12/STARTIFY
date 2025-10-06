@@ -66,7 +66,7 @@
 /* in your CSS file or module */
 textarea::placeholder {
   color: white !important; /* white placeholder text */
-  opacity: 1; /* make sure it’s fully visible */
+  opacity: 0; /* make sure it’s fully visible */
 }
 
 

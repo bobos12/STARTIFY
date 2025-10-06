@@ -91,14 +91,18 @@
   font-size: 1rem;
   line-height: 1.6;
   padding: 0 1.5rem;
-  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  transition:
+    max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.4s ease,
+    padding 0.3s ease;
 }
 
 .faq-item.active .faq-answer {
-  max-height: 300px; /* Adjust for longer answers */
+  max-height: 500px; /* give enough space for tallest item */
   opacity: 1;
   padding: 1rem 1.5rem;
 }
+
 
 /* Footer */
 .faq-footer {
