@@ -39,7 +39,7 @@ export default function Pricing() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="row justify-content-center g-4">
+        <div className="row justify-content-center g-5">
           {plans.map((plan, index) => (
           <div className={`col-md-6 col-xl-4 ${plan.title === "Pro" ? "featured-plan" : ""}`} key={index}>
             <div className="card h-100 border border- shadow-lg bg-black text-white">

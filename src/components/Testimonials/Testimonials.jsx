@@ -1,9 +1,55 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "./Testimonials.css";
 
 const Testimonials = () => {
   const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const authors = [
+    {
+      name: "Leslie Alexander",
+      role: "Freelance React Developer",
+      img: "https://i.pinimg.com/1200x/e6/8f/53/e68f53567f79425eae6ae9035de5221f.jpg",
+      text:
+        "You made it so simple. My new site is so much faster and easier to work with than my old one.",
+    },
+    {
+      name: "Jacob Jones",
+      role: "Digital Marketer",
+      img: "https://i.pinimg.com/736x/e1/4a/83/e14a8371f954ca9c153ba39cb4af9b87.jpg",
+      text:
+        "Simply the best. Better than all the rest. I’d recommend this product to beginners and advanced users.",
+    },
+    {
+      name: "Jenny Wilson",
+      role: "Graphic Designer",
+      img: "https://i.pinimg.com/736x/8b/f5/d1/8bf5d1a4304a2a7f9f04389a79606942.jpg",
+      text:
+        "I cannot believe that I have got a brand new landing page after getting Omega. It was super easy to edit and publish.",
+    },
+    {
+      name: "Michael Smith",
+      role: "Product Manager",
+      img: "https://i.pinimg.com/736x/6c/52/f4/6c52f416b7181346eabbaf2c76711ee5.jpg",
+      text:
+        "Amazing work! The support team helped me fix an issue in minutes. Definitely recommend for modern websites.",
+    },
+    {
+      name: "Sophia Martinez",
+      role: "UI/UX Designer",
+      img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=faces&fit=crop&w=200&h=200",
+      text:
+        "Incredible experience! The interface is clean, and the design feels premium. It really helped my business grow.",
+    },
+    {
+      name: "Daniel Lee",
+      role: "Software Engineer",
+      img: "https://i.pinimg.com/736x/7e/83/0e/7e830e9c49dee63d546ba2b376523d30.jpg",
+      text:
+        "I’ve tried many platforms, but this one stands out. Smooth performance and a wonderful user experience.",
+    },
+  ];
 
   const scroll = (direction) => {
     if (!scrollRef.current) return;
@@ -11,57 +57,29 @@ const Testimonials = () => {
     const card = scrollRef.current.querySelector(".testimonial-card");
     if (!card) return;
 
-    const cardWidth = card.clientWidth + 32; // card width + gap (2rem)
+    const cardWidth = card.clientWidth + 32; // card + gap
     const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
 
     scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
 
-  const authors = [
-  {
-    name: "Leslie Alexander",
-    role: "Freelance React Developer",
-    img: "https://i.pinimg.com/1200x/e6/8f/53/e68f53567f79425eae6ae9035de5221f.jpg",
-    text:
-      "You made it so simple. My new site is so much faster and easier to work with than my old one.",
-  },
-  {
-    name: "Jacob Jones",
-    role: "Digital Marketer",
-    img: "https://i.pinimg.com/736x/e1/4a/83/e14a8371f954ca9c153ba39cb4af9b87.jpg",
-    text:
-      "Simply the best. Better than all the rest. I’d recommend this product to beginners and advanced users.",
-  },
-  {
-    name: "Jenny Wilson",
-    role: "Graphic Designer",
-    img: "https://i.pinimg.com/736x/8b/f5/d1/8bf5d1a4304a2a7f9f04389a79606942.jpg",
-    text:
-      "I cannot believe that I have got a brand new landing page after getting Omega. It was super easy to edit and publish.",
-  },
-  {
-    name: "Michael Smith",
-    role: "Product Manager",
-    img: "https://i.pinimg.com/736x/6c/52/f4/6c52f416b7181346eabbaf2c76711ee5.jpg",
-    text:
-      "Amazing work! The support team helped me fix an issue in minutes. Definitely recommend for modern websites.",
-  },
-  {
-    name: "Sophia Martinez",
-    role: "UI/UX Designer",
-    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=faces&fit=crop&w=200&h=200",
-    text:
-      "Incredible experience! The interface is clean, and the design feels premium. It really helped my business grow.",
-  },
-  {
-    name: "Daniel Lee",
-    role: "Software Engineer",
-    img: "https://i.pinimg.com/736x/7e/83/0e/7e830e9c49dee63d546ba2b376523d30.jpg",
-    text:
-      "I’ve tried many platforms, but this one stands out. Smooth performance and a wonderful user experience.",
-  },
-];
+  // Track scroll to update active dot
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!scrollRef.current) return;
+      const card = scrollRef.current.querySelector(".testimonial-card");
+      if (!card) return;
 
+      const cardWidth = card.clientWidth + 32; // card + gap
+      const index = Math.round(scrollRef.current.scrollLeft / cardWidth);
+      setActiveIndex(index);
+    };
+
+    const grid = scrollRef.current;
+    grid.addEventListener("scroll", handleScroll);
+
+    return () => grid.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <section className="testimonials-section">
@@ -111,10 +129,7 @@ const Testimonials = () => {
                   </blockquote>
 
                   <div className="testimonial-author">
-                    <img
-                      src={author.img}
-                      alt={author.name}
-                    />
+                    <img src={author.img} alt={author.name} />
                     <div>
                       <h4>{author.name}</h4>
                       <span>{author.role}</span>
@@ -133,6 +148,22 @@ const Testimonials = () => {
           >
             <FaArrowRight />
           </button>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="scroll-indicator">
+          {authors.map((_, index) => (
+            <span
+              key={index}
+              className={`dot ${index === activeIndex ? "active" : ""}`}
+              onClick={() => {
+                const card = scrollRef.current.querySelector(".testimonial-card");
+                if (!card) return;
+                const cardWidth = card.clientWidth + 32;
+                scrollRef.current.scrollTo({ left: cardWidth * index, behavior: "smooth" });
+              }}
+            ></span>
+          ))}
         </div>
       </div>
     </section>

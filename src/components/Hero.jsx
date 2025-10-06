@@ -58,8 +58,6 @@ export default function Hero({ onCTAClick }) {
           {/* Right Side: Image */}
           <div
             className="col-12 col-lg-6 d-flex justify-content-center mt-5 mt-lg-0"
-            data-aos="fade-left"
-            data-aos-duration="1000"
           >
             <img
               src={landingImage}

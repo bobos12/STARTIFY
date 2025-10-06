@@ -196,3 +196,45 @@ blockquote p {
     display: none;
   }
 }
+@media (max-width: 768px) {
+  .testimonials-grid {
+    justify-content: flex-start; /* allow scroll from start */
+    padding: 0 1rem; /* padding on both sides */
+    scroll-padding-left: 1rem; /* ensures first card is fully visible */
+  }
+
+  .testimonial-card {
+    flex: 0 0 100%; /* full width */
+    max-width: 400px; /* optional limit */
+    scroll-snap-align: center;
+    margin: 0 auto; /* center the card */
+  }
+}
+
+
+
+.scroll-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+.scroll-indicator .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d1d5db;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.scroll-indicator .dot.active {
+  background: #38bdf8;
+  transform: scale(1.2);
+}
+
+.testimonial-card:hover {
+  transform: none !important;
+}
+
